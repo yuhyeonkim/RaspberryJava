@@ -1,7 +1,26 @@
-var express = require('express');
+var sprintf = require("sprintf-js").sprintf
+var express = require('express')
 var bodyParser = require('body-parser')
 
+// mysql 데이터베이스 connection 모듈을 require 합니다.
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host     : '192.168.56.101',
+    user     : 'dachshund',
+    password : 'dachshund',
+    port     : 3306,
+    database : 'raspboard'
+});
+connection.connect(function(err) {
+    if (err) {
+        console.log(err);
+        return;
+    }
+});
+
+
 var app = express();
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -28,20 +47,6 @@ app.get('/ras', function(req, res) {
 
 
 app.get('/users', function (req, res) {
-    let users = [
-        {
-            user_id: 'user1',
-            user_pw: 'pw1',
-            user_name: 'name1'
-        },
-        {
-            user_id: 'user2',
-            user_pw: 'pw2',
-            user_name: 'name2'
-        }
-    ];
-
-
     if (req.query) {
         console.log(req.query.page_no);
         console.log(req.query.name);
@@ -52,8 +57,30 @@ app.get('/users', function (req, res) {
      * MySQL DB를 전체 조회한 후 요청한 곳에 전송해 주면 된다.
      * 단, Paging이 되게 하면 좋겠다.
      */
-
-    res.json(users);
+    try {
+        connection.query('SELECT user_id, user_pw, user_name FROM user_table', function(err, rows, fields) {
+            try {
+                if (err) {
+                    res.json({});
+                    return;
+                }
+        
+                console.log(rows);
+        
+                res.json(rows);
+             }
+            catch (err) {
+                console.log(err);
+                res.status(500);
+                res.json({});
+            }
+        })
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500);
+        res.json({});
+    }
 });
 
 
@@ -67,8 +94,32 @@ app.get('/users/:id', function (req, res) {
     /********
      * MySQL DB를 특정 조건을 조회한 후 요청한 곳에 전송해 주면 된다.
      */
-
-    res.json(response);
+    try {
+        let querystring = sprintf('SELECT user_id, user_pw, user_name FROM user_table WHERE user_id = "%s"', user_id);
+        connection.query(querystring, function(err, rows, fields) {
+            try {
+                if (err) {
+                    console.log(err)
+                    res.json({});
+                    return;
+                }
+        
+                console.log(rows);
+        
+                res.json(rows);
+             }
+            catch (err) {
+                console.log(err);
+                res.status(500);
+                res.json({});
+            }
+        })
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500);
+        res.json({});
+    }
 });
 
 
@@ -87,7 +138,34 @@ app.post('/users', function (req, res) {
          * 저장 결과를 응답해준다.
          */
 
-        res.json(req.body);
+        try {
+            let querystring = sprintf('INSERT INTO user_table (user_id, user_pw, user_name) VALUES ("%s", password("%s"), "%s")', 
+                                       newUser.user_id, newUser.user_pw, newUser.user_name);
+            console.log(querystring);
+            connection.query(querystring, function(err, rows, field) {
+                try {
+                    if (err) {
+                        console.log(err)
+                        res.json({});
+                        return;
+                    }
+            
+                    console.log(field);
+            
+                    res.json(rows);
+                 }
+                catch (err) {
+                    console.log(err);
+                    res.status(500);
+                    res.json({});
+                }
+            })
+        }
+        catch(err) {
+            console.log(err);
+            res.status(500);
+            res.json({});
+        }
     }
     else {
         console.log('no body');
@@ -109,7 +187,34 @@ app.put('/users/:id', function (req, res) {
          * 저장 결과를 응답해준다.
          */
 
-        res.json(req.body);
+        try {
+            let querystring = sprintf('UPDATE user_table SET user_id ="%s", user_pw = password("%s") WHERE user_name="%s"', 
+                                       updateUser.user_id, updateUser.user_pw, updateUser.user_name);
+            console.log(querystring);
+            connection.query(querystring, function(err, rows, field) {
+                try {
+                    if (err) {
+                        console.log(err)
+                        res.json({});
+                        return;
+                    }
+            
+                    console.log(field);
+            
+                    res.json(rows);
+                 }
+                catch (err) {
+                    console.log(err);
+                    res.status(500);
+                    res.json({});
+                }
+            })
+        }
+        catch(err) {
+            console.log(err);
+            res.status(500);
+            res.json({});
+        }
     }
     else {
         console.log('no body');
@@ -128,7 +233,33 @@ app.delete('/users/:id', function (req, res) {
      * MySQL DB를 특정 조건에 맞는 사용자를 삭제한 후 해당 결과를 전송해 주면 된다.
      */
 
-    res.json(response);
+    try {
+        let querystring = sprintf('DELETE FROM user_table WHERE user_name="%s"', user_id);
+        console.log(querystring);
+        connection.query(querystring, function(err, rows, field) {
+            try {
+                if (err) {
+                    console.log(err)
+                    res.json({});
+                    return;
+                }
+        
+                console.log(field);
+        
+                res.json(rows);
+             }
+            catch (err) {
+                console.log(err);
+                res.status(500);
+                res.json({});
+            }
+        })
+    }
+    catch(err) {
+        console.log(err);
+        res.status(500);
+        res.json({});
+    }
 });
   
 

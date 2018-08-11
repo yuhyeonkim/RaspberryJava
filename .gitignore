@@ -1,1 +1,6 @@
+RaspberryBackend/node_modules
 RaspberryBackend/node_modules/*
+RasberryBackend/package-lock.json
+RasberryFrontend/node_modules
+RasberryFrontend/node_modules/*
+RasberryFrontend/package-lock.json

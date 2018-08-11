@@ -1,9 +1,9 @@
 # Rasberry Java Frontend
 
-[![npm version](https://badge.fury.io/js/diameter.svg)](http://badge.fury.io/js/diameter)
-[![Build Status](https://travis-ci.org/node-diameter/node-diameter.svg?branch=master)](https://travis-ci.org/node-diameter/node-diameter)
-[![Code Climate](https://codeclimate.com/github/node-diameter/node-diameter/badges/gpa.svg)](https://codeclimate.com/github/node-diameter/node-diameter)
-[![Test Coverage](https://codeclimate.com/github/node-diameter/node-diameter/badges/coverage.svg)](https://codeclimate.com/github/node-diameter/node-diameter/coverage)
+[![npm Version][NPM VERSION BADGE]][NPM PAGE]
+[![Node.js][NODE VERSION BADGE]][NODE PAGE]
+[![GitHub License][LICENSE BADGE]][LICENSE PAGE]
+[![Build Status][BUILD BADGE]][BUILD PAGE]
 
 RasberryFront is React + Semantic-UI implementation of Digital Signage for Hanium project. 
 

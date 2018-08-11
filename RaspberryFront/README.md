@@ -1,6 +1,6 @@
 # Rasberry Java Frontend
 
-[![NpmVersion](https://img.shields.io/npm/v/npm.svg)]
+[![NpmVersion](https://img.shields.io/npm/v/npm.svg)](https://img.shields.io/npm/v/npm.svg)
 
 RasberryFront is React + Semantic-UI implementation of Digital Signage for Hanium project. 
 

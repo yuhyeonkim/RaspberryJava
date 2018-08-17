@@ -5,8 +5,10 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 //import LoginForm from './components/Login';
 //import Home from './components/Home';
-import FoodMenu_Image from './components/FoodMenu_Image';
+//import FoodMenu_Image from './components/FoodMenu_Image';
+
+import MenuExampleTabularOnLeft from './components/ManagerMain';
 
 //ReactDOM.render(<LoginForm />, document.getElementById('root'));
-ReactDOM.render(<FoodMenu_Image />, document.getElementById('root'));
+ReactDOM.render(<MenuExampleTabularOnLeft />, document.getElementById('root'));
 registerServiceWorker();

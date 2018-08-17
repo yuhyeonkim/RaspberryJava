@@ -1,5 +1,5 @@
 import React, {Component } from 'react'
-import { Container, Header, Grid, Menu, Segment, Image, Card, Icon, Button } from 'semantic-ui-react'
+import { Container, Header, Grid, Menu, Segment, Image, Button } from 'semantic-ui-react'
 
 
 class Home{}

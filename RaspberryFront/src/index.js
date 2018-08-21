@@ -8,10 +8,12 @@ import registerServiceWorker from './registerServiceWorker';
 //import FoodMenu_Image from './components/FoodMenu_Image';
 //import ManagerMain from './components/ManagerMain';
 //import BoardManager from './components/BoardManager';
+// import BoardLookup from './components/BoardLookup';
 
-import BoardLookup from './components/BoardLookup';
 
+
+import BoardModify from './components/BoardModify';
 
 //ReactDOM.render(<LoginForm />, document.getElementById('root'));
-ReactDOM.render(<BoardLookup />, document.getElementById('root'));
+ReactDOM.render(<BoardModify />, document.getElementById('root'));
 registerServiceWorker();

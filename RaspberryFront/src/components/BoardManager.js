@@ -131,7 +131,7 @@ class BoardManager extends Component {
             <Grid.Column>
               <div style={{marginLeft:50, marginTop:'10%'}}>
                     <Button.Group> 
-                    <Button labelPosition='center' icon='center chevron' content='글쓰기' />
+                    <Button color='blue'>글 쓰기</Button>
                    </Button.Group>
               </div>
             </Grid.Column>

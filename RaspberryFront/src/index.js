@@ -7,10 +7,11 @@ import registerServiceWorker from './registerServiceWorker';
 //import Home from './components/Home';
 //import FoodMenu_Image from './components/FoodMenu_Image';
 //import ManagerMain from './components/ManagerMain';
+//import BoardManager from './components/BoardManager';
 
+import BoardLookup from './components/BoardLookup';
 
-import BoardManager from './components/BoardManager';
 
 //ReactDOM.render(<LoginForm />, document.getElementById('root'));
-ReactDOM.render(<BoardManager />, document.getElementById('root'));
+ReactDOM.render(<BoardLookup />, document.getElementById('root'));
 registerServiceWorker();

@@ -51,7 +51,7 @@ class BoardLookup extends Component {
       </Grid.Column>
 
       <Grid.Column stretched width={12}>
-         <Form style={{marginTop:'5%', marginRight:'5%'}}>
+         <Form style={{marginTop:'5%', marginRight:'10%'}}>
             <Form.Field>
                 <label style={{marginTop:20}}> 제  목 </label>
                 <input style={{marginTop:10}} placeholder='게시물 제목을 입력하는 곳입니다' />
@@ -70,7 +70,7 @@ class BoardLookup extends Component {
                     <Button.Group> 
                     <Button labelPosition='left' icon='left chevron' content='이전' />
                      </Button.Group>
-               </div>
+                </div>
             </Grid.Column>
             
             <Grid.Column>
